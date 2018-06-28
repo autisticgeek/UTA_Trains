@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+.flex-around{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.google-map{
+    height:80vh;
+    width:100vw;
+}
+.green {
+    color:green;
+}
+.blue {
+    color: blue;
+}
+.red {
+    color: red;
+}
+.rf {
+    color: black;
+}
