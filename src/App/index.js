@@ -14,7 +14,7 @@ function App(props) {
     return (
         <div>
             <nav className="flex-around">
-                <Link to="/">Frontrunner</Link>
+                <Link to="/fr">Frontrunner</Link>
                 <Link to="/blue">Blue Line</Link>
                 <Link to="/red">Red Line</Link>
                 <Link to="/green">Green Line</Link>

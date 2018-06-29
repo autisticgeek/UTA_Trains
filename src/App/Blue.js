@@ -18,8 +18,12 @@ class Train extends Component {
         this.geolocate = this.geolocate.bind(this)
     }
     componentDidMount() {
-        this.props.getBlue(701);
-        setInterval(() => { this.props.getBlue(701) }, 15000)
+      this.geolocate()
+        this.props.getBlue();
+        setInterval(() => {
+          this.props.getBlue();
+          this.geolocate();
+        }, 15000)
 
 
     }
@@ -77,7 +81,7 @@ class Train extends Component {
                     <div lat={this.state.lat} lng={this.state.lng}><i class="fas fa-map-marker fa-2x"></i></div>
 
 
-                </GoogleMapReact><button onClick={this.geolocate}>Find ME</button>
+                </GoogleMapReact>
 
             </div>
 

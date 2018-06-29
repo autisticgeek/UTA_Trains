@@ -18,8 +18,8 @@ class Train extends Component {
         this.geolocate = this.geolocate.bind(this)
     }
     componentDidMount() {
-        this.props.getGreen(704);
-        setInterval(() => { this.props.getGreen(704) }, 15000)
+        this.props.getGreen();
+        setInterval(() => { this.props.getGreen() }, 15000)
 
 
     }
