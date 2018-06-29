@@ -29,8 +29,8 @@ const blueReducer = (state = initialState, action) => {
 }
 
 
-export const getBlue = (utaRoute) => {
-const apiUrl = `https://vschool-cors.herokuapp.com/?url=http://api.rideuta.com/SIRI/SIRI.svc/VehicleMonitor/ByRoute?route=${utaRoute}&onwardcalls=true&usertoken=USEKQBT0XC3`;
+export const getBlue = () => {
+const apiUrl = `https://vschool-cors.herokuapp.com/?url=http://api.rideuta.com/SIRI/SIRI.svc/VehicleMonitor/ByRoute?route=701&onwardcalls=true&usertoken=USEKQBT0XC3`;
     return dispatch => {
         axios.get(apiUrl)
             .then(response => {
