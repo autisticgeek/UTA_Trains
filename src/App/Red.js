@@ -10,9 +10,10 @@ class Train extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lat: 0,
-            lng: 0
-        }
+            lat: 40.65,
+            lng: -111.90,
+            zoom: 12
+          }
         this.onGeolocateError = this.onGeolocateError.bind(this);
         this.onGeolocateSuccess = this.onGeolocateSuccess.bind(this);
         this.geolocate = this.geolocate.bind(this)
@@ -22,7 +23,6 @@ class Train extends Component {
       this.geolocate();
         setInterval(() => {
           this.props.getRed();
-          this.geolocate();
         }, 15000)
 
 
@@ -57,13 +57,14 @@ class Train extends Component {
 
 
     render() {
-        let vehiclesArr=[]
+        let red=[]
         if (this.props.trains) {
-            vehiclesArr = this.props.trains.map((vehicleObj, index) => {
+            red = this.props.trains.map((vehicleObj, index) => {
                 let temp = null;
                 if (vehicleObj.DirectionRef[0] !== "") {
-                    const direction = vehicleObj.DirectionRef[0]
-                    temp = <div key={index} lat={vehicleObj.VehicleLocation["0"].Latitude["0"]} lng={vehicleObj.VehicleLocation["0"].Longitude["0"]} text={direction} title={direction}><i class="fas fa-train fa-2x"></i></div>;
+                    const direction = vehicleObj.DirectionRef[0];
+                    const bearing = vehicleObj.Extensions[0].Bearing[0];
+                    temp = <div key={index} lat={vehicleObj.VehicleLocation["0"].Latitude["0"]} lng={vehicleObj.VehicleLocation["0"].Longitude["0"]} text={direction} title={direction}><i class="fas fa-arrow-alt-circle-up fa-2x red" style={{"transform": "rotate("+bearing+"deg)"}}></i></div>;
 
                 }
                 return temp
@@ -71,13 +72,13 @@ class Train extends Component {
         }
 
 
-        return <div className="red">
+        return <div>
             <div className='google-map'>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyAp_gcAL9g64umPJUNU10vjP3Y-MHbmmQo" }}
-                    center={{ lat: 40.65, lng: -111.90 }}
-                    zoom={11}>
-                    {vehiclesArr}
+                    center={{ lat: this.state.lat, lng: this.state.lng }}
+                    zoom={this.state.zoom}>
+                    {red}
                     <div lat={this.state.lat} lng={this.state.lng}><i class="fas fa-map-marker fa-2x"></i></div>
 
 

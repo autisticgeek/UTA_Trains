@@ -62,8 +62,10 @@ class Train extends Component {
             vehiclesArr = this.props.trains.map((vehicleObj, index) => {
                 let temp = null;
                 if (vehicleObj.DirectionRef[0] !== "") {
-                    const direction = vehicleObj.DirectionRef[0]
-                    temp = <div key={index} lat={vehicleObj.VehicleLocation["0"].Latitude["0"]} lng={vehicleObj.VehicleLocation["0"].Longitude["0"]} text={direction} title={direction}><i class="fas fa-train fa-2x fr"></i></div>;
+                    const direction = vehicleObj.DirectionRef[0];
+                    const bearing = vehicleObj.Extensions[0].Bearing[0];
+
+                    temp = <div key={index} lat={vehicleObj.VehicleLocation["0"].Latitude["0"]} lng={vehicleObj.VehicleLocation["0"].Longitude["0"]} text={direction} title={direction}><i class="fas fa-arrow-alt-circle-up fa-2x fr" style={{"transform": "rotate("+bearing+"deg)"}}></i></div>;
 
                 }
                 return temp
