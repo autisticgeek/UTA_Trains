@@ -26,7 +26,6 @@ class Train extends Component {
     
     
     setInterval(() => {
-      this.geolocate();
     this.props.getGreen();
     this.props.getBlue();
     this.props.getRed();
