@@ -11,7 +11,7 @@
     width:100vw;
 }
 .green {
-    color:green;
+    color:rgb(9, 226, 9);
 }
 .blue {
     color: blue;
@@ -19,6 +19,6 @@
 .red {
     color: red;
 }
-.rf {
-    color: black;
+.fr {
+    color: rgb(206, 1, 206);
 }

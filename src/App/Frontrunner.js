@@ -18,8 +18,12 @@ class Train extends Component {
         this.geolocate = this.geolocate.bind(this)
     }
     componentDidMount() {
-        this.props.getFrontrunner(750);
-        setInterval(()=>{this.props.getFrontrunner(750)}, 15000)
+        this.props.getFrontrunner();
+      this.geolocate();
+        setInterval(()=>{
+          this.props.getFrontrunner();
+          this.geolocate();
+        }, 15000)
        
         
     }
@@ -58,8 +62,10 @@ class Train extends Component {
             vehiclesArr = this.props.trains.map((vehicleObj, index) => {
                 let temp = null;
                 if (vehicleObj.DirectionRef[0] !== "") {
-                    const direction = vehicleObj.DirectionRef[0]
-                    temp = <div key={index} lat={vehicleObj.VehicleLocation["0"].Latitude["0"]} lng={vehicleObj.VehicleLocation["0"].Longitude["0"]} text={direction} title={direction}><i class="fas fa-train fa-2x"></i></div>;
+                    const direction = vehicleObj.DirectionRef[0];
+                    const bearing = vehicleObj.Extensions[0].Bearing[0];
+
+                    temp = <div key={index} lat={vehicleObj.VehicleLocation["0"].Latitude["0"]} lng={vehicleObj.VehicleLocation["0"].Longitude["0"]} text={direction} title={direction}><i class="fas fa-arrow-alt-circle-up fa-2x fr" style={{"transform": "rotate("+bearing+"deg)"}}></i></div>;
 
                 }
                 return temp
@@ -78,7 +84,7 @@ class Train extends Component {
                     <div lat={this.state.lat} lng={this.state.lng}><i class="fas fa-map-marker fa-2x"></i></div>
 
 
-                </GoogleMapReact><button onClick={this.geolocate}>Find ME</button>
+                </GoogleMapReact>
 
             </div>
 
