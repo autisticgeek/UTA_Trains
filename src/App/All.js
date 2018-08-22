@@ -111,7 +111,8 @@ class Train extends Component {
         return temp;
       })
     }
-    return <div>
+    return <div class="mapWrapper" onClick={this.geolocate()}>
+    <div class="crosshair"><i class="fas fa-crosshairs fa-2x"></i></div>
       <div className = 'google-map' ><GoogleMapReact bootstrapURLKeys = {{key:"AIzaSyAp_gcAL9g64umPJUNU10vjP3Y-MHbmmQo"}} center = {{lat: this.state.lat, lng: this.state.lng}} zoom={this.state.zoom}>{green}{blue}{red}{frontrunner}<div lat={this.state.lat} lng = {this.state.lng}><i class="fas fa-map-marker fa-2x"></i></div></GoogleMapReact></div></div>
       }
     }

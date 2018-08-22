@@ -9,6 +9,7 @@
 .google-map{
     height:80vh;
     width:100vw;
+    position: relative
 }
 .green {
     color:rgb(9, 226, 9);
@@ -22,3 +23,5 @@
 .fr {
     color: rgb(206, 1, 206);
 }
+
+.crosshair { position: fixed; top: 30px; left: 10px; z-index: 99; background-color: white; padding:0.1cm }
